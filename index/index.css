@@ -50,6 +50,7 @@ html{
     font-size: 1.5rem;
     margin-left: 2.5rem;
     position: relative;
+    white-space: nowrap;
 }
 .navigationbar_list .item_active{
     color: #1E80FF;
@@ -71,6 +72,9 @@ html{
     justify-content: space-around;
     align-items: center;
     /* background-color: #ff6799; */
+}
+.other_list{
+    white-space: nowrap;
 }
 .searchbar_wrap{
     width: 36rem;
@@ -198,6 +202,7 @@ html{
     justify-content: center;
     align-items: center;
     color: #515767;
+    white-space: nowrap;
 }
 .list_active{
     color: #1E80FF;
