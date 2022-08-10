@@ -9,22 +9,21 @@ body{
 }
 .navigationbar_wrap{
     width: 100%;
-    height: 4.8rem;
+    /* height: 4rem; */
     background-color: #fff;
-    border-bottom: 1px solid #F1F1F1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+/* 上部导航条 */
 .navigationbar_cotent{
-    width: 75%;
-    height: 100%;
+    width: 100%;
+    height: 4rem;
     /* background-color: #bfa; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 15rem;
     box-sizing: border-box;
+    border-bottom: 1px solid #F1F1F1;
+
 }
 .navigationbar_list{
     height: 100%;
@@ -35,7 +34,7 @@ body{
 .navigationbar_list .item_logo{
     display: block;
     width: 7rem;
-    /* background-color: #fff; */
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,15 +44,27 @@ body{
 }
 .navigationbar_list .item{
     height: 100%;
-    line-height: 4.8rem;
+    line-height: 4rem;
     /* background-color: #bfa; */
     display: block;
     color:#515767 ;
     font-size: 1rem;
     margin-left: 1.5rem;
+    position: relative;
 }
 .navigationbar_list .item_active{
     color: #1E80FF;
+}
+.navigationbar_list .item_animation::after{
+    content: '';
+    width: 1.5rem;
+    height: 0.15rem;
+    background-color: #1E80FF;
+    position: absolute; 
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    border: 0.1rem solid #C2C8D1;
 }
 
 .navigationbar_other{
@@ -160,4 +171,32 @@ body{
     background-color: #F4F9FF;
     color: #1E80FF;
     font-size: 0.9rem;
+}
+
+/* 下部导航条 */
+.navigationlist_content{
+    width: 100%;
+    height: 3rem;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    padding-left: 30rem;
+    box-sizing: border-box;
+}
+.list{
+    height: 100%;
+    background-color: #fff;
+    display: block;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #515767;
+}
+.list_active{
+    color: #1E80FF;
+}
+.list:hover{
+    color: #1E80FF;
 }
