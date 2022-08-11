@@ -19,6 +19,11 @@ const routes = [
     path: '/content',
     name: 'content',
     component: () => import('../views/Content.vue')
+  },
+  {
+    path: '/IndexView',
+    name: 'IndexView',
+    component: () => import('../views/IndexView.vue')
   }
 ]
 
