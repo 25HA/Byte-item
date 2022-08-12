@@ -8,7 +8,7 @@
         <router-link to="/IndexView">首页</router-link>
       </li>
       <li>
-        <router-link to="/">沸点</router-link>
+        <router-link to="/boilingView">沸点</router-link>
       </li>
       <li>
         <router-link to="/">课程</router-link>

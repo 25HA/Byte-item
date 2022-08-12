@@ -1,7 +1,9 @@
 import Vue from 'vue'
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import test from '../views/test.vue'
+import test from '../views/boilingView.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +14,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/test',
-    name: 'test',
-    component: () => import('../views/test.vue')
+    path: '/boilingView',
+    name: 'boilingView',
+    component: () => import('../views/boilingView.vue')
   },
   {
     path: '/content',
