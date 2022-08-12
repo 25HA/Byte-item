@@ -29,7 +29,19 @@ const routes = [
     children: [
       
     ]
-  }
+  },
+  {
+    path: '/course',
+    name: 'course',
+    component: () => import('../views/Course.vue'),
+    children: [
+      {
+        path: '/coursecontent',
+        name: 'coursecontent',
+        component: () => import('../views/CourseContent.vue')
+      },
+    ]
+  },
 ]
 
 const router = new VueRouter({
