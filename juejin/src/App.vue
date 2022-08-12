@@ -6,6 +6,7 @@
 		</nav>
 		<router-view />
 	</div>
+
 </template>
 <script>
 import HelloWorld from './components/HelloWorld.vue'
