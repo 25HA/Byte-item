@@ -29,7 +29,12 @@ const routes = [
     children: [
       
     ]
-  }
+  },
+  {
+    path: '/CourseDetails',
+    name: 'CourseDetails',
+    component: () => import('../views/CourseDetails.vue')
+  },
 ]
 
 const router = new VueRouter({
