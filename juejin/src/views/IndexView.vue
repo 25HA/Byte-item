@@ -16,7 +16,6 @@
     <a href="#" class="list">阅读</a>
   </div>
 </template>
-
 <style lang="less" scoped>
 *{
   margin: 0;

@@ -1,9 +1,6 @@
 <template>
 	<div id="app">
 		<HelloWorld msg="Welcome to Your Vue.js App" />
-		<nav>
-			
-		</nav>
 		<router-view />
 	</div>
 
@@ -22,5 +19,10 @@ export default {
 	margin: 0;
 	padding: 0;
 }
+#app{
+	width: 100%;
+	// overflow: hidden;
+}
+
 </style>
 

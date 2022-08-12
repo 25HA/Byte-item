@@ -5,7 +5,7 @@
         <div><img src="../assets/juejin.png" style="border:none; "></div>
       </li>
       <li>
-        <router-link to="/">首页</router-link>
+        <router-link to="/IndexView">首页</router-link>
       </li>
       <li>
         <router-link to="/">沸点</router-link>
@@ -26,7 +26,7 @@
         <router-link to="/">APP</router-link>
       </li>
       <li>
-        <router-link to="/">插件</router-link>
+        <router-link to="/Content">插件</router-link>
       </li>
     </ul>
     <!-- <router-link to="/">Home</router-link> |
@@ -62,36 +62,32 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: {
+      type: String,
+      default:''
+    }
   }
 }
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-// h3 {
-//   margin: 40px 0 0;
-// }
-// ul {
-//   list-style-type: none;
-//   padding: 0;
-// }
-// li {
-//   display: inline-block;
-//   margin: 0 10px;
-// }
-// a {
-//   color: #42b983;
-// }
 
+<style scoped lang="less">
+html{
+  width:100%;
+  font-size: 10px;
+}
+body{
+  width:100%;
+}
 nav {
   background: #ffffff;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 1.5rem 8rem;
+  padding: 1.2rem 8rem;
   font-size: 1.3rem;
+  box-sizing: border-box;
 
   .search {
     margin-left: 20rem;
@@ -145,10 +141,19 @@ nav {
       a {
         text-decoration: none;
         color: black;
+        position: relative;
       }
 
-      a::after:hover {
-        border-bottom: 1rem solid rgb(68, 156, 215);
+      a:hover::after {
+        content: '';
+        position: absolute;
+        top: 3.4rem;
+        left: 0;
+        width: 100%;
+        height: 0.3rem;
+        background: rgb(68, 156, 215);
+        border-radius: 0.1rem;
+        // border: 1rem solid rgb(68, 156, 215);
       }
 
       a:hover {
@@ -225,6 +230,8 @@ nav {
     height: 2.5rem;
     border-radius: 50%;
     margin-left: 2rem;
+    // position: absolute;
+    right: 20px;
     background-color: #d5d5d5;
     overflow: hidden;
 

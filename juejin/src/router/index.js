@@ -12,10 +12,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue')
-  },{
     path: '/test',
     name: 'test',
     component: () => import('../views/test.vue')
@@ -28,7 +24,11 @@ const routes = [
   {
     path: '/IndexView',
     name: 'IndexView',
-    component: () => import('../views/IndexView.vue')
+    component: () => import('../views/IndexView.vue'),
+    //二级路由进入口
+    children: [
+      
+    ]
   }
 ]
 

@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <div>{{msg}}</div>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+
   </div>
 </template>
 
@@ -22,9 +20,9 @@ export default {
   },
   beforeCreate() {},
   created() {
-    axios.get('https://www.baidu.com').then(res => {
-      console.log(res);
-    })
+    // axios.get('https://www.baidu.com').then(res => {
+    //   console.log(res);
+    // })
   },
   beforeMount() {},
   // 能获取到dom
