@@ -24,7 +24,7 @@
 }
 html {
   font-size: 10px;
-  background-color: #bfa;
+  // background-color: #bfa;
 }
 .navigationlist_content {
   width: 100%;
@@ -32,7 +32,7 @@ html {
   /* background-color: red; */
   display: flex;
   align-items: center;
-  // padding-left: 50rem;
+  padding-left: 20rem;
   box-sizing: border-box;
   .list {
     height: 100%;
