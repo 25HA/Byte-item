@@ -8,10 +8,10 @@
         <router-link to="/IndexView">首页</router-link>
       </li>
       <li>
-        <router-link to="/">沸点</router-link>
+        <router-link to="/boilingView">沸点</router-link>
       </li>
       <li>
-        <router-link to="/CourseDetails">课程</router-link>
+        <router-link to="/Course">课程</router-link>
       </li>
       <li>
         <router-link to="/">直播</router-link>
@@ -20,7 +20,7 @@
         <router-link to="/">活动</router-link>
       </li>
       <li>
-        <router-link to="/">商城</router-link>
+        <router-link to="/book">商城</router-link>
       </li>
       <li>
         <router-link to="/">APP</router-link>
