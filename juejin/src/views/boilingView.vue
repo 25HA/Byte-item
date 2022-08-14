@@ -760,8 +760,7 @@ html {
         margin: 1rem auto;
         border-top: 1px solid #3d5a71;
         text-align: center;
-        color: #909498
-;
+        color: #909498;
       }
     }
     .howPlay{
