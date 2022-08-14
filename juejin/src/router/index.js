@@ -46,6 +46,11 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/book',
+    name: 'book',
+    component: () => import('../views/BookDetails.vue')
+  },
 ]
 
 const router = new VueRouter({

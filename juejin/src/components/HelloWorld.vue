@@ -20,7 +20,7 @@
         <router-link to="/">活动</router-link>
       </li>
       <li>
-        <router-link to="/">商城</router-link>
+        <router-link to="/book">商城</router-link>
       </li>
       <li>
         <router-link to="/">APP</router-link>
