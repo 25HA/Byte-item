@@ -418,11 +418,8 @@
 
 <script>
 export default {};
-<<<<<<< HEAD
-</script>~
-=======
 </script>
->>>>>>> ed0a2ca61a464ed8dd55a822c30f50a286f052a0
+
 <style lang="less" scoped>
 * {
   margin: 0;

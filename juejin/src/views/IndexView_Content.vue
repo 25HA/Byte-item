@@ -5,15 +5,15 @@
       <!-- 中间内容区 -->
       <div class="content_main">
         <div class="topbar">
-          <div class="item item_active">推荐</div>
+          <router-link to="/" class="item item_active">推荐</router-link>
           <div class="line">|</div>
-          <div class="item">最新</div>
+          <router-link to="/" class="item">最新</router-link>
           <div class="line">|</div>
-          <div class="item">热榜</div>
+          <router-link to="/" class="item">热榜</router-link>
         </div>
 
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -21,7 +21,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -47,9 +47,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -57,7 +57,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -83,9 +83,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -93,7 +93,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -119,9 +119,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -129,7 +129,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -155,9 +155,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -165,7 +165,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -191,9 +191,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -201,7 +201,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -227,9 +227,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -237,7 +237,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -263,9 +263,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -273,7 +273,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -299,9 +299,9 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
         <!-- 文章列表 -->
-        <div class="article_wrap">
+        <router-link to="/" class="article_wrap">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -309,7 +309,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <div class="item">Javascript</div>
+                <router-link to="/" class="item">Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
@@ -335,7 +335,7 @@
               <img src="../assets/IndexView_article_cover.webp" alt="cover" />
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
 
       <!-- 右侧列表 -->
@@ -350,7 +350,7 @@
               <div class="top_hello">
                 <span>中午</span>好!
               </div>
-              <div class="top_result">已签到</div>
+              <router-link to="/" class="top_result">已签到</router-link>
             </div>
             <div class="attendance_bottom">
               你已经连续签到
@@ -368,12 +368,12 @@
             <img src="../assets/IndexView_books.webp" alt />
           </div>
           <div class="about_app_wrap">
-            <div class="app_left_wrap">
+            <router-link to="/" class="app_left_wrap">
               <img src="../assets/IndexView_QRcode.png" alt />
-            </div>
+            </router-link>
             <div class="app_right_wrap">
-              <div class="app_title">下载稀土掘金APP</div>
-              <div class="app_info">一个帮助开发者成长的社区</div>
+              <router-link to="/" class="app_title">下载稀土掘金APP</router-link>
+              <router-link to="/" class="app_info">一个帮助开发者成长的社区</router-link>
             </div>
           </div>
         </div>
@@ -381,7 +381,7 @@
         <!-- 作者榜 -->
         <div class="list_author_wrap">
           <div class="author_title">🎖️作者榜</div>
-          <div class="author_list">
+          <router-link to="/" class="author_list">
             <div class="author_icon">
               <img src="../assets/IndexView_QRcode.png" />
             </div>
@@ -394,8 +394,8 @@
               </div>
               <div class="info_status">字节工程师</div>
             </div>
-          </div>
-          <div class="author_list">
+          </router-link>
+          <router-link to="/" class="author_list">
             <div class="author_icon">
               <img src="../assets/IndexView_QRcode.png" />
             </div>
@@ -408,8 +408,8 @@
               </div>
               <div class="info_status">Javascript架构师</div>
             </div>
-          </div>
-          <div class="author_list">
+          </router-link>
+          <router-link to="/" class="author_list">
             <div class="author_icon">
               <img src="../assets/IndexView_QRcode.png" />
             </div>
@@ -422,12 +422,12 @@
               </div>
               <div class="info_status">网易云架构师</div>
             </div>
-          </div>
+          </router-link>
 
-          <div class="author_more">
+          <router-link to="/" class="author_more">
             完整榜单
-            <span>></span>
-          </div>
+            <span></span>
+          </router-link>
         </div>
 
         <!-- 稀土掘金指南 -->
@@ -573,6 +573,9 @@ body {
               cursor: pointer;
               color: #1e80ff;
             }
+            .item:hover{
+              color: #1e80ff;
+            }
           }
           .article_title {
             width: 100%;
@@ -620,6 +623,10 @@ body {
                 color: #868686;
               }
             }
+            .show_thumbs:hover span,
+            .show_comments:hover span{
+              color: #1d8bff;
+            }
           }
         }
         .article_image {
@@ -629,6 +636,9 @@ body {
             width: 12rem;
           }
         }
+      }
+      .article_content:hover {
+        background-color: rgba(244, 245, 245, 0.9);
       }
     }
   }
@@ -674,6 +684,10 @@ body {
             text-align: center;
             line-height: 3rem;
             border-radius: 1rem;
+          }
+          .top_result:hover {
+            cursor: pointer;
+            background-color: #bfd6fe;
           }
         }
         .attendance_bottom {
@@ -789,10 +803,20 @@ body {
         }
       }
       .author_more {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 1.6rem;
         color: #1d8bff;
         line-height: 2;
-        text-align: center;
+        span{
+          width: 0.8rem;
+          height: 0.8rem;
+          border: 0.1rem solid #1d8bff;
+          border-left: none;
+          border-top: none;
+          transform: rotate(-45deg);
+        }
       }
     }
     .list_introduce_wrap {
@@ -829,6 +853,9 @@ body {
         margin-right: 1rem;
         color: #959595;
       }
+      .item:hover{
+        color: #1d8bff;
+      }
       .police {
         display: flex;
         align-items: center;
@@ -854,10 +881,9 @@ body {
           align-items: center;
           img {
             width: 2.4rem;
-          height: 2.4rem;
+            height: 2.4rem;
           }
         }
-        
       }
     }
   }
