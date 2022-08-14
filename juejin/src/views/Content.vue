@@ -221,7 +221,7 @@ html {
   margin-top: 2rem;
   width: 100%;
   overflow: hidden;
-  display: grid;
+  display: grid; 
   grid-template-columns: 2.1fr 1fr;
   column-gap: 2rem;
   .subsidiary {
@@ -251,16 +251,18 @@ html {
       margin-bottom: 3rem;
     }
   }
-  .content {
+  .content{
     margin-left: 24%;
     width: 76%;
-    // height: 800rem;
-    background-color: #ffffff;
+    // height: 200rem;
+    border-radius: 0.5rem;
     .article {
       width: 100%;
       padding: 3rem 3rem;
-      overflow: hidden;
+      overflow:hidden;
       box-sizing: border-box;
+      border-radius: 0.5rem;
+      background-color: #ffffff;
       .title {
         font-size: 1.4rem;
         width: 100%;
