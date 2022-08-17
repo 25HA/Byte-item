@@ -20,7 +20,7 @@
                 <div class="item line">|</div>
                 <div class="item">23天前</div>
                 <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
+                <router-link to="/" class="item">前端.Javascript</router-link>
               </div>
               <div class="article_title">消灭异步回调,还得是async-await</div>
               <div
