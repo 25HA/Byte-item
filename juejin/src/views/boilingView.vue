@@ -34,7 +34,11 @@
       <div class="content">
         <!-- 输入框 -->
         <div class="input">
-          <textarea name="textinput" placeholder="快和掘友一起分享新鲜事！告诉你个小秘密，发布沸点时添加圈子和话题会被更多掘友看到哦~"></textarea>
+          <textarea
+            name="textinput"
+            v-model="textdata"
+            placeholder="快和掘友一起分享新鲜事！告诉你个小秘密，发布沸点时添加圈子和话题会被更多掘友看到哦~"
+          ></textarea>
         </div>
         <!-- 发布 -->
         <div class="release">
@@ -56,23 +60,19 @@
               <span>话题</span>
             </div>
           </div>
-          <div class="release-right">发布</div>
+          <div class="release-right" ref="public">发布</div>
         </div>
       </div>
-      <div class="content-item">
+      <div class="content-item" v-for="(item,index) in contentList" :key="index">
         <div class="item">
           <div class="title">
-            <img
-              class="user"
-              src="https://ts1.cn.mm.bing.net/th/id/R-C.876d98b09f9eb9576dc3d8842a0034f4?rik=SEgYsoyFZQxPPg&riu=http%3a%2f%2ftupian.qqw21.com%2farticle%2fUploadPic%2f2019-1%2f201912319273090791.jpg&ehk=LsHqnjsVSG6v5Ts4Irux9sjNtk4WcVkjdRy%2b98MTeN4%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt
-            />
+            <img class="user" :src="item.src" />
             <div class="author">
-              <div class="username">蜡笔小新喔</div>
-              <div class="professional">前端CV大师 . 2小时前</div>
+              <div class="username">{{item.username}}</div>
+              <div class="professional">{{item.professional}}</div>
             </div>
           </div>
-          <div class="detail">成都仲裁是不是效果不行啊。感觉好拉杂</div>
+          <div class="detail">{{item.detail}}</div>
         </div>
         <div class="item-footer">
           <div class="foot">
@@ -83,205 +83,7 @@
             <i class="iconfont icon-pinglun"></i>
             <span>评论</span>
           </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://ts1.cn.mm.bing.net/th/id/R-C.1eed2de61a172c6ca2d79fc5ea62eb01?rik=c7W7KrSN7xFOIg&riu=http%3a%2f%2fimg.crcz.com%2fallimg%2f202003%2f10%2f1583821081100057.jpg&ehk=q%2f9lt0hQhwZzKFdRKYyG2g4zxQKgTWKJ4gHeelom3Mo%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt
-            />
-            <div class="author">
-              <div class="username">Qinghui</div>
-              <div class="professional">50分钟前</div>
-            </div>
-          </div>
-          <div class="detail">日惟东来，山海不阻，晴雨无伤。[给力][红包]</div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://ts1.cn.mm.bing.net/th/id/R-C.af81ac6eee795b8be73ea3108c4c9db4?rik=%2flw9QunpULFmKg&riu=http%3a%2f%2fimg.crcz.com%2fallimg%2f202002%2f11%2f1581388393842131.jpg&ehk=D%2fd0wiF3zd1pSooP7DOKWPOUzJyn9lS%2bZso8ctu3Zao%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt
-            />
-            <div class="author">
-              <div class="username">破风手_自由</div>
-              <div class="professional">
-                像风一样自由 @ 公众号:我的代码你自由了
-                ·
-                1小时前
-              </div>
-            </div>
-          </div>
-          <div
-            class="detail"
-          >#搞笑程序员# 之前公司有个大神，大早上的在厕所里睡着了，这还不够，问题是他打呼噜，而且声音贼大，持续大概有二十多分钟吧，感觉到不对，喊人赶紧敲门，也敲了大概3分钟左右他才醒，差点就叫救护车了[我想静静][我想静静][我想静静]</div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://p3-passport.byteacctimg.com/img/user-avatar/5d08c09da9bffd1331bc6220b884a466~300x300.image"
-              alt
-            />
-            <div class="author">
-              <div class="username">沸点小助手</div>
-              <div class="professional">掘金 . 5天前</div>
-            </div>
-          </div>
-          <div class="detail">
-            【三分钟阅读挑战 | 碎片时间不浪费 】
-            上下班坐地铁太无聊？睡觉前只知道刷短视频？那就来参加我们的三分钟阅读挑战活动吧，随时随地掏出你的手机，打开掘金app阅读文章，发布读书体会，留下你的学习脚印，高效利用一切碎片化时间！和掘友们共同阅读分享，真的不要太快乐！[看]…
-          </div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://ts1.cn.mm.bing.net/th/id/R-C.1eed2de61a172c6ca2d79fc5ea62eb01?rik=c7W7KrSN7xFOIg&riu=http%3a%2f%2fimg.crcz.com%2fallimg%2f202003%2f10%2f1583821081100057.jpg&ehk=q%2f9lt0hQhwZzKFdRKYyG2g4zxQKgTWKJ4gHeelom3Mo%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt
-            />
-            <div class="author">
-              <div class="username">Qinghui</div>
-              <div class="professional">50分钟前</div>
-            </div>
-          </div>
-          <div class="detail">日惟东来，山海不阻，晴雨无伤。[给力][红包]</div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://ts1.cn.mm.bing.net/th/id/R-C.af81ac6eee795b8be73ea3108c4c9db4?rik=%2flw9QunpULFmKg&riu=http%3a%2f%2fimg.crcz.com%2fallimg%2f202002%2f11%2f1581388393842131.jpg&ehk=D%2fd0wiF3zd1pSooP7DOKWPOUzJyn9lS%2bZso8ctu3Zao%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt
-            />
-            <div class="author">
-              <div class="username">破风手_自由</div>
-              <div class="professional">
-                像风一样自由 @ 公众号:我的代码你自由了
-                ·
-                1小时前
-              </div>
-            </div>
-          </div>
-          <div
-            class="detail"
-          >#搞笑程序员# 之前公司有个大神，大早上的在厕所里睡着了，这还不够，问题是他打呼噜，而且声音贼大，持续大概有二十多分钟吧，感觉到不对，喊人赶紧敲门，也敲了大概3分钟左右他才醒，差点就叫救护车了[我想静静][我想静静][我想静静]</div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-dianzan"></i>
-            <span>点赞</span>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="item">
-          <div class="title">
-            <img
-              class="user"
-              src="https://p3-passport.byteacctimg.com/img/user-avatar/5d08c09da9bffd1331bc6220b884a466~300x300.image"
-              alt
-            />
-            <div class="author">
-              <div class="username">沸点小助手</div>
-              <div class="professional">掘金 . 5天前</div>
-            </div>
-          </div>
-          <div class="detail">
-            【三分钟阅读挑战 | 碎片时间不浪费 】
-            上下班坐地铁太无聊？睡觉前只知道刷短视频？那就来参加我们的三分钟阅读挑战活动吧，随时随地掏出你的手机，打开掘金app阅读文章，发布读书体会，留下你的学习脚印，高效利用一切碎片化时间！和掘友们共同阅读分享，真的不要太快乐！[看]…
-          </div>
-        </div>
-        <div class="item-footer">
-          <div class="foot">
-            <i class="iconfont icon-fenxiang"></i>
-            <span>分享</span>
-          </div>
-          <div class="foot">
-            <i class="iconfont icon-pinglun"></i>
-            <span>评论</span>
-          </div>
-          <div class="foot">
+          <div class="foot" v-on:click="good" ref="good">
             <i class="iconfont icon-dianzan"></i>
             <span>点赞</span>
           </div>
@@ -319,22 +121,31 @@
       <div class="handpick">
         <div class="title">精选沸点</div>
         <div class="item">
-          <div
-            class="detail"
-          >早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym</div>
-          <div class="about">80赞 · 273评论</div>
+          <div class="detail">
+            部门新来了一个的同事，性格比较内敛，话比较少，但是和我们相处还算融洽，平时摸鱼聊天他也会跟着笑呵呵的，跟他聊天啊他也会笑着回复，和我们一起聊聊天。我在公司点奶茶啊买零食买饮料，经常是给部门的同事都一起买一份，给大家分享嘛，大家都会笑着的对我说谢谢，唯独这个新同事，不管我给他奶茶还是辣条还是饮料，他都笑呵呵的接受，就是不说谢谢。
+            前两天看他搬东西，我路过就顺手帮了一下，他也没说一句话，也没有对我说谢谢
+            我心里虽然有点不得劲，但是转头就没纠结这些小事。
+            今天中午出去吃饭，排队时我就排他后面，他手机不知道为什么付款码刷不出来，饭店里大家都排队点餐支付，他半天刷不出来付款码，人家店员就等他付钱，我们队伍后面还排了其他人等着点餐支付。我看他尴尬又有点着急，我就给店员说我帮他付钱，然后店员就扫了我的付款码。
+            然后我接着扫我自己的饭钱，等我一抬头，这位新同事已经过去接饮料了（饮料是免费的）
+            我当时就楞了，合着搞了半天他还是没有对我说谢谢，我就很疑惑他为啥总是不说谢谢
+            吃饭的时候，我就笑着问他手机停机了哇？他笑着说没有，就是莫名的网络不好了。然后大家就该吃饭吃饭，该聊天就聊天，气氛依旧融洽
+            但是他依旧没说什么谢谢我刚刚帮他付钱，也没有要把饭钱转给我或者下次请回来的意思，就感觉好像没有我帮他付钱的这档子事儿
+            但是我不是在乎这么二三十元的饭钱啊，毕竟之前点奶茶这些也不止二三十元了。这个饭钱他如果真的要还我，我肯定会笑着说客气啥，不用还我。关键是他一句谢谢都不说，权当无事发生，这就让我很不得劲了，但是人家笑呵呵的，我总不能上去问他：你刚刚为什么不谢谢我？。。。。害，以后不帮他了
+          </div>
+          <div class="about">69赞 · 268评论</div>
+        </div>
+        <div class="item">
+          <div class="detail">
+            【三分钟阅读挑战 | 碎片时间不浪费 】
+            上下班坐地铁太无聊？睡觉前只知道刷短视频？那就来参加我们的三分钟阅读挑战活动吧，随时随地掏出你的手机，打开掘金app阅读文章，发布读书体会，留下你的学习脚印，高效利用一切碎片化时间！和掘友们共同阅读分享，真的不要太快乐！[看]…
+          </div>
+          <div class="about">278赞 · 274评论</div>
         </div>
         <div class="item">
           <div
             class="detail"
-          >早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym</div>
-          <div class="about">80赞 · 273评论</div>
-        </div>
-        <div class="item">
-          <div
-            class="detail"
-          >早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym早啊，jym</div>
-          <div class="about">80赞 · 273评论</div>
+          >抽奖送6本书。都是出版社送我的书，我送给大家且自费邮寄。。。Spring Boot送三本，其他各一本。抽奖规则：必须是我的粉丝。抽奖一定公开公正，我保证。</div>
+          <div class="about">273赞 · 1322评论</div>
         </div>
       </div>
       <div class="hotTopic">
@@ -344,80 +155,86 @@
             <i class="iconfont icon-huanyihuan"></i>换一换
           </div>
         </div>
-        <div class="item">
+        <div class="item" v-for="(item,index) in topicList" :key="index">
           <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
+            <i class="iconfont icon-tubiao303"></i>{{item.left}}
           </div>
-          <div class="right">690</div>
+          <div class="right">{{item.right}}</div>
         </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <i class="iconfont icon-tubiao303"></i>#搞笑程序员#
-          </div>
-          <div class="right">690</div>
-        </div>
-        <div class="more">
-          查看更多 >
-        </div>
+        <div class="more">查看更多 ></div>
       </div>
       <div class="howPlay">
-        <i class="iconfont icon-manage-circuit-full"></i> 
+        <i class="iconfont icon-manage-circuit-full"></i>
         <div class="text">如何玩转沸点</div>
       </div>
     </div>
   </div>
 </template>
-
+<!--axios发接口请求-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-export default {};
+// 调用请求的开始
+import axios from "axios";
+export default {
+  data() {
+    return {
+      textdata: "",
+      // 沸点内容
+      contentList: [],
+      // 沸点话题
+      topicList: []
+    };
+  },
+  // 调用ajax请求方法
+  created() {
+    this.getContentList();
+    this.getTopicList();
+  },
+  methods: {
+    good() {
+      // if (this.$refs.good.style.color != "#147fff") {
+      this.$refs.good.style.color = "#147fff";
+      // }else if (this.$refs.good.style.color = "#147fff" ){
+      //   this.$refs.good.style.color = '#b6bbc3'
+      // }
+      console.log(this.$refs.good.style.color);
+    },
+    // 发接口请求
+    getContentList: function() {
+      axios
+        .get(
+          "https://www.fastmock.site/mock/a1d68f0efcfef2f683ae62d63d9f06c9/boiling-content/content"
+        )
+        .then(res => {
+          // console.log(res.data.content);
+          this.contentList = res.data.content;
+          // console.log(this.contentList);
+        });
+    },
+    getTopicList: function() {
+      axios
+        .get(
+          "https://www.fastmock.site/mock/a1d68f0efcfef2f683ae62d63d9f06c9/boiling-content/topic"
+        )
+        .then(res => {
+          // console.log(res.data);
+          this.topicList = res.data;
+          // console.log(this.topicList);
+        });
+    },
+  },
+  mounted() {
+    window.Vue = this;
+  },
+  updated: function() {
+    // console.log(Vue.textdata);
+    if (Vue.textdata != "") {
+      this.$refs.public.style.background = "#1e80ff";
+    } else {
+      this.$refs.public.style.background = "#d2e6ff";
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -684,7 +501,7 @@ html {
         width: 80%;
         margin: 1rem auto;
         padding: 0.8rem;
-        border-radius: .8rem;
+        border-radius: 0.8rem;
         .detail {
           margin-left: 0.8rem;
           font-size: 14px;
@@ -696,7 +513,7 @@ html {
           text-overflow: ellipsis;
           color: #3d5a71;
         }
-        .detail:hover{
+        .detail:hover {
           color: #237bff;
         }
         .about {
@@ -708,11 +525,11 @@ html {
           color: #7a8297;
         }
       }
-      .item:hover{
+      .item:hover {
         background: #eee;
       }
     }
-    .hotTopic{
+    .hotTopic {
       width: 25rem;
       height: 46rem;
       margin-top: 1.2rem;
@@ -727,16 +544,16 @@ html {
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid #99a1b5;
-        .left{
-        font-size: 16px;
+        .left {
+          font-size: 16px;
         }
-        .right{
+        .right {
           margin-right: 1rem;
           font-size: 12px;
-          color: #91949A;
+          color: #91949a;
         }
       }
-      .item{
+      .item {
         width: 80%;
         height: 1rem;
         line-height: 1rem;
@@ -745,15 +562,15 @@ html {
         // background: #eee;
         display: flex;
         justify-content: space-between;
-        .left:hover{
+        .left:hover {
           color: #237bff;
         }
-        .right{
-        font-size: 10px;
-        -webkit-transform: scale(0.8);
+        .right {
+          font-size: 10px;
+          -webkit-transform: scale(0.8);
         }
       }
-      .more{
+      .more {
         width: 80%;
         height: 4rem;
         line-height: 4rem;
@@ -763,7 +580,7 @@ html {
         color: #909498;
       }
     }
-    .howPlay{
+    .howPlay {
       display: flex;
       width: 25rem;
       height: 6rem;
@@ -775,7 +592,7 @@ html {
       font-size: 16px;
       text-align: center;
       justify-content: center;
-      .text{
+      .text {
         margin-left: 1rem;
       }
     }
