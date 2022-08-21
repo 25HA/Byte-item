@@ -243,7 +243,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  overflow: auto;
+  // overflow: auto;
   //   中间内容区
   .content_main {
     flex: 1;
