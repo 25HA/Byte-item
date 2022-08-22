@@ -30,8 +30,8 @@
                   <span>{{item.article_views}}</span>
                 </div>
                 <div class="show_thumbs" v-on:click="handleThumbs($event,index)">
-                  <div v-if="!thumbedArticle[index]" class="iconfont icon-zan"></div>
-                  <div v-else class="iconfont icon-dianzan_kuai-copy"></div>
+                  <div class="iconfont" :class="thumbedArticle.indexOf(index)==-1?'icon-zan':'icon-dianzan_kuai-copy'" ></div>
+                  <!-- <div v-else class="iconfont "></div> -->
                   <span>{{item.article_thumbs}}</span>
                 </div>
                 <div class="show_comments">
@@ -60,12 +60,12 @@
               <div class="top_hello">
                 <span>{{sometime}}</span>好!
               </div>
-              <div class="top_result" v-if="!isPresent" @click="handlePresent">未签到</div>
+              <div class="top_result" v-if="!isPresent" @click="handlePresent">去签到</div>
               <div class="top_result" v-else>已签到</div>
             </div>
             <div class="attendance_bottom">
               你已经连续签到
-              <span>27</span> 天
+              <span>{{totalDay}}</span> 天
             </div>
           </div>
         </div>
@@ -189,7 +189,8 @@ export default {
       // 是否签到
       isPresent:false,
       // 我点赞的文章
-      thumbedArticle:[]
+      thumbedArticle:[],
+      totalDay:0
     };
   },
   // 调用ajax请求方法
@@ -199,10 +200,10 @@ export default {
     this.getRelatedList();
     this.handleSometine();
   },
- mounted(){
-  // 监听滚轮事件
-  addEventListener('scroll',this.handleScroll)
- },
+  mounted(){
+    // 监听滚轮事件
+    addEventListener('scroll',this.handleScroll)
+  },
   // 绑定方法的执行函数的聚集池
   methods: {
     // 发接口请求
@@ -243,16 +244,19 @@ export default {
     },
     // 点赞
     handleThumbs(event,index) {
-      console.log(index);
-      const thumbArr=this.thumbedArticle;
-      thumbArr[index]=1-thumbArr[index];
-      this.thumbedArticle = thumbArr;
-      // 存入缓存
-      localStorage.setItem("thumbedArticle",this.thumbedArticle);
-    },
-    handleInitThumb(){
-      const thumbedArticle=new Array(this.articleList.length).fill(0);
-      this.thumbedArticle=thumbedArticle;
+      console.log(this.thumbedArticle.indexOf(index));
+      if(!this.thumbedArticle.indexOf(index)){
+        // console.log('thumbed');
+        this.thumbedArticle=this.thumbedArticle.filter(i=>i!=index);
+        this.articleList[index].article_thumbs-=1;
+        // console.log(this.thumbedArticle);
+      }else{
+        // console.log('no');
+        this.thumbedArticle.push(index);
+        // console.log(this.thumbedArticle);
+        this.articleList[index].article_thumbs=+this.articleList[index].article_thumbs+1
+
+      }
     },
     // 上午中午晚上
     handleSometine() {
@@ -301,6 +305,8 @@ export default {
     // 签到
     handlePresent(){
       this.isPresent='true';
+      this.totalDay++;
+      localStorage.setItem('totalDay',this.totalDay)
     },
     // 滚动到底部再次发送请求
     handleScroll(){
@@ -456,6 +462,10 @@ body {
               .iconfont {
                 width: 1.5rem;
                 margin-right: 0.3rem;
+              }
+              .icon-dianzan_kuai-copy{
+                color: #1d8bff;
+
               }
               span {
                 color: #868686;
