@@ -12,7 +12,7 @@
           <router-link to="/" class="item">热榜</router-link>
         </div>
         <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap" v-for="(item,index) in articleList" :key="index">
+        <div class="article_wrap" v-for="(item,index) in articleList" :key="index">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -29,8 +29,8 @@
                   <div class="iconfont icon-eye"></div>
                   <span>{{item.article_views}}</span>
                 </div>
-                <div class="show_thumbs" v-on:click="handleThumbs">
-                  <div v-if="isThumb==false" class="iconfont icon-zan"></div>
+                <div class="show_thumbs" v-on:click="handleThumbs($event,index)">
+                  <div v-if="!thumbedArticle[index]" class="iconfont icon-zan"></div>
                   <div v-else class="iconfont icon-dianzan_kuai-copy"></div>
                   <span>{{item.article_thumbs}}</span>
                 </div>
@@ -45,7 +45,7 @@
             </div>
             <div v-else class="article_image"></div>
           </div>
-        </router-link>
+        </div>
       </div>
 
       <!-- 右侧列表 -->
@@ -58,9 +58,10 @@
                 <img src="../assets/IndexView_canlindar.png" alt="日历" />
               </div>
               <div class="top_hello">
-                <span>中午</span>好!
+                <span>{{sometime}}</span>好!
               </div>
-              <router-link to="/" class="top_result">已签到</router-link>
+              <div class="top_result" v-if="!isPresent" @click="handlePresent">未签到</div>
+              <div class="top_result" v-else>已签到</div>
             </div>
             <div class="attendance_bottom">
               你已经连续签到
@@ -91,12 +92,18 @@
         <!-- 作者榜 -->
         <div class="list_author_wrap">
           <div class="author_title">🎖️作者榜</div>
-          <router-link :to="item.author_details" class="author_list" v-for="(item,index) in authorList" :key="index">
+          <router-link
+            :to="item.author_details"
+            class="author_list"
+            v-for="(item,index) in authorList"
+            :key="index"
+          >
             <div class="author_icon">
               <img :src="item.author_icon" />
             </div>
             <div class="author_info">
-              <div class="info_nickname">{{item.author_nickname}}
+              <div class="info_nickname">
+                {{item.author_nickname}}
                 <span class="info_level">
                   <img :src="item.author_level" />
                 </span>
@@ -113,7 +120,12 @@
 
         <!-- 稀土掘金指南 -->
         <div class="list_introduce_wrap">
-          <router-link :to="item.related_details" class="introduce_juejin" v-for="(item,index) in relatedList" :key="index">
+          <router-link
+            :to="item.related_details"
+            class="introduce_juejin"
+            v-for="(item,index) in relatedList"
+            :key="index"
+          >
             <img :src="item.related_img" />
             <span>{{item.related_title}}</span>
           </router-link>
@@ -161,59 +173,148 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 // 调用请求的开始
-import axios from "axios"
+import axios from "axios";
 export default {
   // 定义全局数据
-  data(){
-    return{
+  data() {
+    return {
       // 文章列表数组
-      articleList:[],
-      // 文章是否自己点赞过
-      isThumb:false,
+      articleList: [],
       // 作者榜
-      authorList:[],
+      authorList: [],
       // 掘金指南相关
-      relatedList:[]
-    }
+      relatedList: [],
+      // 上午中午晚上
+      sometime: "上午",
+      // 是否签到
+      isPresent:false,
+      // 我点赞的文章
+      thumbedArticle:[]
+    };
   },
   // 调用ajax请求方法
-  created(){
+  created() {
     this.getArticleList();
     this.getAuthorList();
     this.getRelatedList();
-
+    this.handleSometine();
   },
+ mounted(){
+  // 监听滚轮事件
+  addEventListener('scroll',this.handleScroll)
+ },
   // 绑定方法的执行函数的聚集池
-  methods:{
+  methods: {
     // 发接口请求
-    getArticleList:function(){
-      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/articleList').then(res=>{
-        // console.log(res);
-        this.articleList=res.data;
-        // console.log(this.articleList);
-      })
+    getArticleList: function() {
+      axios
+        .get(
+          "https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/articleList"
+        )
+        .then(res => {
+          // console.log(res);
+          this.articleList =this.articleList.concat(res.data) ;
+          // console.log(this.articleList);
+        });
     },
     // 发接口请求
-    getAuthorList:function(){
-      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/authorList').then(res=>{
-        // console.log(res);
-        this.authorList=res.data;
-        // console.log(this.authorList);
-      })
+    getAuthorList: function() {
+      axios
+        .get(
+          "https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/authorList"
+        )
+        .then(res => {
+          // console.log(res);
+          this.authorList = res.data;
+          // console.log(this.authorList);
+        });
     },
     // 发接口请求
-    getRelatedList:function(){
-      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/relatedList').then(res=>{
-        // console.log(res);
-        this.relatedList=res.data;
-        console.log(this.relatedList);
-      })
+    getRelatedList: function() {
+      axios
+        .get(
+          "https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/relatedList"
+        )
+        .then(res => {
+          // console.log(res);
+          this.relatedList = res.data;
+          // console.log(this.relatedList);
+        });
     },
-
-
     // 点赞
-    handleThumbs(){
-      this.isThumb=!this.isThumb;
+    handleThumbs(event,index) {
+      console.log(index);
+      const thumbArr=this.thumbedArticle;
+      thumbArr[index]=1-thumbArr[index];
+      this.thumbedArticle = thumbArr;
+      // 存入缓存
+      localStorage.setItem("thumbedArticle",this.thumbedArticle);
+    },
+    handleInitThumb(){
+      const thumbedArticle=new Array(this.articleList.length).fill(0);
+      this.thumbedArticle=thumbedArticle;
+    },
+    // 上午中午晚上
+    handleSometine() {
+      let time =new Date()
+        .toLocaleString()
+        .split(" ")[1]
+        .split(":")[0];
+        // console.log(time);
+
+      switch(time){
+        case '00':
+        case '01':
+        case '02':
+        case '03':
+        case '04':
+        case '05':
+          this.sometime='深夜';
+          break;
+        case '06':
+        case '07':
+        case '08':
+        case '09':
+        case '10':
+        case '11':
+        case '12':
+           this.sometime='上午';
+           break;
+        case '13':
+        case '14':
+        case '15':
+        case '16':
+        case '17':
+        case '18':
+           this.sometime='下午';
+           break;
+        case '19':
+        case '20':
+        case '21':
+        case '22':
+        case '23':
+          this.sometime='晚上';
+          break;
+      }
+     
+    },
+    // 签到
+    handlePresent(){
+      this.isPresent='true';
+    },
+    // 滚动到底部再次发送请求
+    handleScroll(){
+       //滚动条距离顶部的距离
+			 let scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+			 //可视区的高度
+			 let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			 //滚动条的总高度
+			 let scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+			 //滚动条到底部的条件
+			 if(scrollTop+windowHeight == scrollHeight){
+          // console.log('到底啦~');
+          this.getArticleList();
+			 }
     }
   }
 };
