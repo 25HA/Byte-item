@@ -63,7 +63,7 @@
           <div class="release-right" ref="public">发布</div>
         </div>
       </div>
-      <div class="content-item" v-for="(item,index) in contentList" :key="index">
+      <div class="content-item" v-for="(item,index) in contentList" :key="index" >
         <div class="item">
           <div class="title">
             <img class="user" :src="item.src" />
@@ -79,14 +79,18 @@
             <i class="iconfont icon-fenxiang"></i>
             <span>分享</span>
           </div>
-          <div class="foot">
+          <div class="foot" @click="showComment(index)">
             <i class="iconfont icon-pinglun"></i>
             <span>评论</span>
           </div>
-          <div class="foot" v-on:click="good" ref="good">
+          <div class="foot" v-on:click="good(index)" v-bind:class="item.liked ? 'active' : ''">
             <i class="iconfont icon-dianzan"></i>
             <span>点赞</span>
           </div>
+        </div>
+        <div class="comments" v-show="isindex == index">
+            <img class="user" src="https://p26-passport.byteacctimg.com/img/user-avatar/6c364d2da6b72b2b864debe326466bf8~300x300.image" alt="">
+            <input type="text" class="commentsContent" placeholder="输入评论(Enter换行，Ctrl + Enter发送)">
         </div>
       </div>
     </div>
@@ -182,7 +186,8 @@ export default {
       // 沸点内容
       contentList: [],
       // 沸点话题
-      topicList: []
+      topicList: [],
+      isindex:''
     };
   },
   // 调用ajax请求方法
@@ -191,13 +196,11 @@ export default {
     this.getTopicList();
   },
   methods: {
-    good() {
-      // if (this.$refs.good.style.color != "#147fff") {
-      this.$refs.good.style.color = "#147fff";
-      // }else if (this.$refs.good.style.color = "#147fff" ){
-      //   this.$refs.good.style.color = '#b6bbc3'
-      // }
-      console.log(this.$refs.good.style.color);
+    good(index) {
+      this.contentList[index].liked = !this.contentList[index].liked;
+    },
+    showComment(index){
+      this.isindex = index
     },
     // 发接口请求
     getContentList: function() {
@@ -397,7 +400,7 @@ html {
       height: 4rem;
       margin: 2rem;
       margin-top: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 0;
       border-top: 1px solid #e7e7e7;
       border-bottom-left-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
@@ -411,6 +414,43 @@ html {
           margin-left: 0.5rem;
         }
       }
+      .active{
+        color:#147fff !important;
+      }
+      .commended{
+        color:#147fff !important;
+
+      }
+    }
+    .comments {
+      background: #fff;
+      height: 6.5rem;
+      line-height: 6.5rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-top:1px solid #eee;
+      display: flex;
+      align-items: center;
+      .user{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        margin-left: 2rem;
+      }
+      .commentsContent{
+        flex: 1;
+        height: 4rem;
+        margin-left: 2rem;
+        border: none;
+        background: #eee;
+        font-size: 1.4rem;
+      }
+      .commentsContent:focus{
+        outline: none !important;
+      }
+
     }
   }
   .myself-detail {
