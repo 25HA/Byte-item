@@ -11,329 +11,39 @@
           <div class="line">|</div>
           <router-link to="/" class="item">热榜</router-link>
         </div>
-
         <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
+        <router-link to="/" class="article_wrap" v-for="(item,index) in articleList" :key="index">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
+                <router-link to="/" class="item username">{{item.username}}</router-link>
                 <div class="item line">|</div>
-                <div class="item">23天前</div>
+                <div class="item">{{item.date}}</div>
                 <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
+                <router-link to="/" class="item">{{item.article_label}}</router-link>
               </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
+              <div class="article_title">{{item.article_title}}</div>
+              <div class="article_breif">{{item.article_breif}}</div>
               <div class="article_show">
                 <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
+                  <div class="iconfont icon-eye"></div>
+                  <span>{{item.article_views}}</span>
                 </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
+                <div class="show_thumbs" v-on:click="handleThumbs">
+                  <div v-if="isThumb==false" class="iconfont icon-zan"></div>
+                  <div v-else class="iconfont icon-dianzan_kuai-copy"></div>
+                  <span>{{item.article_thumbs}}</span>
                 </div>
                 <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
+                  <div class="iconfont icon-comment"></div>
+                  <span>{{item.article_comments}}</span>
                 </div>
               </div>
             </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
+            <div v-if="item.article_cover" class="article_image">
+              <img :src="item.article_cover" alt="cover" />
             </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
-          </div>
-        </router-link>
-        <!-- 文章列表 -->
-        <router-link to="/" class="article_wrap">
-          <div class="article_content">
-            <div class="article_info">
-              <div class="article_topbar">
-                <router-link to="/" class="item username">来碗盐焗星球</router-link>
-                <div class="item line">|</div>
-                <div class="item">23天前</div>
-                <div class="item line">|</div>
-                <router-link to="/" class="item">Javascript</router-link>
-              </div>
-              <div class="article_title">消灭异步回调,还得是async-await</div>
-              <div
-                class="article_breif"
-              >本篇,带你读懂async~await间的浪漫。关于异步处理问题,ES5的回调让我们陷入回调地狱轮回,后来ES6的Promise带我们走向光明。</div>
-              <div class="article_show">
-                <div class="show_eyes">
-                  <img src="../assets/IndexView_dark_eye.png" alt="浏览" />
-                  <span>4855</span>
-                </div>
-                <div class="show_thumbs">
-                  <img src="../assets/IndexView_dark_thumb-up.png" alt="点赞" />
-                  <span>100</span>
-                </div>
-                <div class="show_comments">
-                  <img src="../assets/IndecView_shallow_comment-o.png" alt="评论" />
-                  <span>评论</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="article_image">
-              <img src="../assets/IndexView_article_cover.webp" alt="cover" />
-            </div>
+            <div v-else class="article_image"></div>
           </div>
         </router-link>
       </div>
@@ -381,46 +91,17 @@
         <!-- 作者榜 -->
         <div class="list_author_wrap">
           <div class="author_title">🎖️作者榜</div>
-          <router-link to="/" class="author_list">
+          <router-link :to="item.author_details" class="author_list" v-for="(item,index) in authorList" :key="index">
             <div class="author_icon">
-              <img src="../assets/IndexView_QRcode.png" />
+              <img :src="item.author_icon" />
             </div>
             <div class="author_info">
-              <div class="info_nickname">
-                尘心于华
+              <div class="info_nickname">{{item.author_nickname}}
                 <span class="info_level">
-                  <img src="../assets/IndexView_status.png" />
+                  <img :src="item.author_level" />
                 </span>
               </div>
-              <div class="info_status">字节工程师</div>
-            </div>
-          </router-link>
-          <router-link to="/" class="author_list">
-            <div class="author_icon">
-              <img src="../assets/IndexView_QRcode.png" />
-            </div>
-            <div class="author_info">
-              <div class="info_nickname">
-                来碗盐焗星球
-                <span class="info_level">
-                  <img src="../assets/IndexView_status.png" />
-                </span>
-              </div>
-              <div class="info_status">Javascript架构师</div>
-            </div>
-          </router-link>
-          <router-link to="/" class="author_list">
-            <div class="author_icon">
-              <img src="../assets/IndexView_QRcode.png" />
-            </div>
-            <div class="author_info">
-              <div class="info_nickname">
-                你也向往长安城
-                <span class="info_level">
-                  <img src="../assets/IndexView_status.png" />
-                </span>
-              </div>
-              <div class="info_status">网易云架构师</div>
+              <div class="info_status">{{item.author_status}}</div>
             </div>
           </router-link>
 
@@ -432,18 +113,10 @@
 
         <!-- 稀土掘金指南 -->
         <div class="list_introduce_wrap">
-          <div class="introduce_juejin">
-            <img src="../assets/IndexView_juejin1.png" />
-            <span>稀土掘金漫游指南</span>
-          </div>
-          <div class="introduce_juejin">
-            <img src="../assets/IndexView_juejin1.png" />
-            <span>安装掘金浏览器插件</span>
-          </div>
-          <div class="introduce_juejin">
-            <img src="../assets/IndexView_juejin1.png" />
-            <span>前往掘金翻译计划</span>
-          </div>
+          <router-link :to="item.related_details" class="introduce_juejin" v-for="(item,index) in relatedList" :key="index">
+            <img :src="item.related_img" />
+            <span>{{item.related_title}}</span>
+          </router-link>
         </div>
 
         <!-- 掘金详细信息 -->
@@ -481,13 +154,74 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
+<!--axios发接口请求-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+// 调用请求的开始
+import axios from "axios"
+export default {
+  // 定义全局数据
+  data(){
+    return{
+      // 文章列表数组
+      articleList:[],
+      // 文章是否自己点赞过
+      isThumb:false,
+      // 作者榜
+      authorList:[],
+      // 掘金指南相关
+      relatedList:[]
+    }
+  },
+  // 调用ajax请求方法
+  created(){
+    this.getArticleList();
+    this.getAuthorList();
+    this.getRelatedList();
 
+  },
+  // 绑定方法的执行函数的聚集池
+  methods:{
+    // 发接口请求
+    getArticleList:function(){
+      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/articleList').then(res=>{
+        // console.log(res);
+        this.articleList=res.data;
+        // console.log(this.articleList);
+      })
+    },
+    // 发接口请求
+    getAuthorList:function(){
+      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/authorList').then(res=>{
+        // console.log(res);
+        this.authorList=res.data;
+        // console.log(this.authorList);
+      })
+    },
+    // 发接口请求
+    getRelatedList:function(){
+      axios.get('https://www.fastmock.site/mock/726ff1264270a66fb14cd2981c00b6f6/article/relatedList').then(res=>{
+        // console.log(res);
+        this.relatedList=res.data;
+        console.log(this.relatedList);
+      })
+    },
+
+
+    // 点赞
+    handleThumbs(){
+      this.isThumb=!this.isThumb;
+    }
+  }
+};
+</script>
 
 <style lang="less" scoped>
+/* 引入iconfont所需图标 */
+@import "https://at.alicdn.com/t/c/font_3595625_qzqipxppu8.css";
 * {
   margin: 0;
   padding: 0;
@@ -509,7 +243,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  overflow: auto;
+  // overflow: auto;
   //   中间内容区
   .content_main {
     flex: 1;
@@ -544,9 +278,10 @@ body {
     }
     .article_wrap {
       width: 100%;
-      padding: 1.5rem;
+      padding: 1.5rem 1.5rem 0 1.5rem;
       box-sizing: border-box;
       // background-color: #ff6700;
+      position: relative;
       .article_content {
         width: 100%;
         display: flex;
@@ -576,7 +311,7 @@ body {
               cursor: pointer;
               color: #1e80ff;
             }
-            .item:hover{
+            .item:hover {
               color: #1e80ff;
             }
           }
@@ -612,13 +347,12 @@ body {
             .show_eyes,
             .show_thumbs,
             .show_comments {
-              width: 4.5rem;
               // background-color: #bfa;
               margin-right: 1rem;
               display: flex;
               align-items: center;
               justify-content: space-between;
-              img {
+              .iconfont {
                 width: 1.5rem;
                 margin-right: 0.3rem;
               }
@@ -627,7 +361,9 @@ body {
               }
             }
             .show_thumbs:hover span,
-            .show_comments:hover span{
+            .show_thumbs:hover .icon-zan,
+            .show_comments:hover .icon-comment,
+            .show_comments:hover span {
               color: #1d8bff;
             }
           }
@@ -640,9 +376,24 @@ body {
           }
         }
       }
-      .article_content:hover {
-        background-color: rgba(244, 245, 245, 0.9);
-      }
+    }
+    .article_wrap:hover {
+      background-color: rgba(250, 250, 250, 0.9);
+    }
+
+    .article_wrap:hover.article_wrap::after {
+      content: "×";
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: red;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #cbcbcb;
+      font-size: 1.4rem;
     }
   }
   //   右侧列表
@@ -773,20 +524,26 @@ body {
         padding: 1rem;
         box-sizing: border-box;
         border-bottom: 1px solid #f5f5f5;
+        // background-color: red;
         .author_icon {
           width: 4.6rem;
           height: 4.6rem;
-          margin-right: 1rem;
+          // margin-right: 1rem;
           border-radius: 50%;
           overflow: hidden;
+          // background-color: #ff6799;
+
           img {
             width: 4.6rem;
             height: 4.6rem;
           }
         }
         .author_info {
+          flex: 1;
+          // background-color: #ff6799;
+          margin-left: 1rem;
           .info_nickname {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #2b2b2b;
             .info_level {
               display: inline-block;
@@ -799,9 +556,12 @@ body {
             }
           }
           .info_status {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #8f8f8f;
             line-height: 2;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
       }
@@ -812,7 +572,7 @@ body {
         font-size: 1.6rem;
         color: #1d8bff;
         line-height: 2;
-        span{
+        span {
           width: 0.8rem;
           height: 0.8rem;
           border: 0.1rem solid #1d8bff;
@@ -856,7 +616,7 @@ body {
         margin-right: 1rem;
         color: #959595;
       }
-      .item:hover{
+      .item:hover {
         color: #1d8bff;
       }
       .police {
@@ -892,4 +652,6 @@ body {
   }
 }
 </style>
+
+
 
