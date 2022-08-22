@@ -30,7 +30,7 @@ const routes = [
     //二级路由进入口
     children: [
       {
-        path:'/IndexView_Content',
+        path:'/',
         name:'IndexView_Content',
         component: () => import('../views/IndexView_Content.vue')
       }
