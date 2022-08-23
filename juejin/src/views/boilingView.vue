@@ -259,6 +259,7 @@ html {
     border-radius: 0.5rem;
     position: fixed;
     top: 4.8rem;
+    cursor: pointer;
     .kinds {
       height: 3rem;
       background: #fff;
@@ -321,6 +322,7 @@ html {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
         //   background: #237bff;
         .release-left {
           display: flex;
@@ -410,6 +412,7 @@ html {
       .foot {
         flex: 1;
         text-align: center;
+        cursor: pointer;
         span {
           margin-left: 0.5rem;
         }
@@ -454,6 +457,7 @@ html {
     }
   }
   .myself-detail {
+    cursor: pointer;
     .myself {
       width: 22rem;
       height: 15rem;
