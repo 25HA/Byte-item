@@ -97,7 +97,7 @@
             </pre>
           </p>
           <h2>原型及原型链的定义</h2>
-          <h3>原型</h3>
+          <h3>原型的定义</h3>
           <p><span>原型链</span>是一个<span>对象</span>的查找机制，比如查找对象arr中的toString方法，会先在自己的<span>私有属性</span> 中找，如果没有，就沿着__proto__去原型对象中找，如果还没有，就继续沿着__proto__去它原型对象中的原型对象中找，直到找到Object中的<span>原型对象</span>（Object原型对象中的__proto__指向null），如果还没找到，那么结果就是undefined；</p>
           <h1>原型</h1>
           <h2>什么是原型</h2>
@@ -119,6 +119,8 @@
             <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/44f3d91ce4a746f5a51d94e64d5fe92c~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
           </p>
           <p>......</p>
+          <h1>原型链</h1>
+          <h2>什么是原型链</h2>
           <!-- <pre v-highlightjs><code class="javascript">const s = new Date().toString()</code></pre> -->
         </div>
         <div class="article-label">
@@ -246,7 +248,7 @@
           <p class="list-part-two-text-two">一个帮助开发者成长的社区</p>
         </div>
       </div>
-      <div class="list-part-three">
+      <div class="list-part-three" id="list">
         <div class="list-part-three-title">
           <span>相关文章</span>
         </div>
@@ -256,8 +258,23 @@
           <p class="list-part-three-item-relevant">{{item.fabulous}}点赞&nbsp;·&nbsp;{{item.comment}}评论</p>
         </div>
       </div>
-      <div class="list-part-four">
-        
+      <div class="list-part-four" :class="fix==true?'mm':''">
+        <div class="list-part-four-title">
+          <span>目录</span>
+        </div>
+        <div class="list-part-four-bar"></div>
+        <div class="list-part-four-items">
+          <div class="list-part-four-item" v-for="(item,index) in dom" :key="index">
+            <div v-if="item.blue==true" class="asm"></div>
+            <span v-if="item.label=='1'" class="hh1">{{item.text}}</span>
+            <span v-if="item.label=='2'" class="hh2">{{item.text}}</span>
+            <span v-if="item.label=='3'" class="hh3">{{item.text}}</span>
+            <span v-if="item.label=='4'" class="hh4">{{item.text}}</span>
+            <span v-if="item.label=='5'" class="hh5">{{item.text}}</span>
+            <span v-if="item.label=='6'" class="hh6">{{item.text}}</span>
+          </div>
+          
+        </div>
       </div>
     </div>
   </div>
@@ -279,6 +296,7 @@ export default {
       forward: false,
       warn: false,
       read: false,
+      fix:false,
       recommendDetail:[
         {
           nickname:'杨俊威胁论',
@@ -444,9 +462,10 @@ export default {
         },
       ]
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      // console.log(scrollTop + document.documentElement.clientHeight);
+      // console.log(scrollTop + document.documentElement.clientHeight,document.body.scrollHeight);
       // console.log(document.body.scrollHeight)
-      if(scrollTop + document.documentElement.clientHeight>=document.body.scrollHeight){
+      // console.log(scrollTop)
+      if(scrollTop + document.documentElement.clientHeight>=document.body.scrollHeight-10){
         this.recommendDetail = this.recommendDetail.concat(m)
       }
     },
@@ -457,14 +476,57 @@ export default {
       if(structure[i].nodeName=='H1' || structure[i].nodeName=='H2' || structure[i].nodeName=='H3' || structure[i].nodeName=='H4' || structure[i].nodeName=='H5' || structure[i].nodeName=='H6'){
         // console.log(structure[i])
         var obj = {}
-        obj.index = i;
+        obj.ind = i;
         obj.text = structure[i].innerHTML;
         obj.label = structure[i].nodeName.slice(1,2);
+        obj.blue=false;
         this.dom.push(obj)
       }
     }
-    console.log(this.dom)
+    window.addEventListener('scroll',(e)=>{
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      let list = document.getElementById('list').offsetTop
+      let hei = document.getElementById('list').offsetHeight
+      // console.log(list,scrollTop)
+      // console.log(hei)
+      if((list+hei)-scrollTop<=0){
+        this.fix=true
+      }else{
+        this.fix=false
+      }
+    })
+    // console.log(this.dom)
     // console.log(structure[4].nodeName)
+
+    // structure[3].addEventListener('mousemove',(e)=>{
+    //   console.log(e)
+    // },true)
+    // var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    // console.log(scrollTop)
+    // console.log(structure[4].offsetTop)
+
+    window.addEventListener('scroll',(e)=>{
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      // var structure = document.getElementById('text').childNodes
+      var arr = [];
+      for(let i=0;i<this.dom.length;i++){
+        if(structure[parseInt(this.dom[i].ind)].offsetTop-scrollTop>=0){
+          // console.log(structure[parseInt(this.dom[i].ind)].offsetTop,scrollTop)
+          this.dom[i].blue = true;
+          arr.push(1)
+          for(let j=i+1;j<this.dom.length;j++){
+            this.dom[j].blue = false;
+          }
+          break;
+        }else{
+          this.dom[i].blue = false;
+        }
+      }
+      if(arr.length==0){
+        this.dom[this.dom.length-1].blue = true;
+      }
+      // console.log(this.dom)
+    },true)
   }
 };
 </script>
@@ -981,6 +1043,103 @@ html {
           color:#1e80ff;
         }
       }
+    }
+    .list-part-four{
+      padding:1.6rem 1.6rem;
+      background-color: #fff;
+      box-sizing: border-box;
+      border-radius: 0.2rem;
+      .list-part-four-title{
+        font-size: 1.4rem;
+      }
+      .list-part-four-bar{
+        width: 100%;
+        height: 0.01rem;
+        background-color: rgb(222, 222, 222);
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .list-part-four-items{
+        max-height: 50rem;
+        overflow-y: scroll;
+        .list-part-four-item{
+          padding: 0.5rem 0.6rem;
+          box-sizing: border-box;
+          width: 100%;
+          // overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 1.4rem;
+          position: relative;
+          cursor: pointer;
+          .asm{
+            position: absolute;
+            z-index: 99;
+            left: 0rem;
+            width: 0.4rem;
+            height: 1.6rem;
+            border-top-right-radius: 0.3rem;
+            border-bottom-right-radius: 0.3rem;
+            background-color: rgb(66, 156, 240);
+          }
+          .hh1{
+          
+          }
+          .hh2{
+            margin-left: 1.5rem;
+          }
+          .hh3{
+            margin-left: 3rem;
+          }
+          .hh4{
+            margin-left: 4.5rem;
+          }
+          .hh5{
+            margin-left: 6rem;
+          }
+          .hh6{
+            margin-left: 7.5rem;
+          }
+        }
+        .list-part-four-item:hover{
+          background-color: rgb(236, 236, 236);
+        }
+        // .hh1{
+        //   margin-left: 1rem;
+        // }
+        // .hh2{
+        //   margin-left: 1rem;
+        // }
+        // .hh3{
+        //   margin-left: 1rem;
+        // }
+        // .hh4{
+        //   margin-left: 1rem;
+        // }
+        // .hh5{
+        //   margin-left: 1rem;
+        // }
+        // .hh6{
+        //   margin-left: 1rem;
+        // }
+      }
+      .list-part-four-items::-webkit-scrollbar {
+        width: 4px;    
+      }
+      .list-part-four-items::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.2);
+      }
+      .list-part-four-items::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+      }
+    }
+    .mm{
+      position: fixed;
+      top:5rem;
+      width: 28rem;
     }
   }
 }

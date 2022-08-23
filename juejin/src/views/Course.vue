@@ -1,7 +1,7 @@
 <template>
   <div class="app">
       <div class="navigationlist_content">
-    <router-link to="/CourseContent" class="list list_active">全部</router-link>
+    <router-link to="/coursecontent" class="list list_active">全部</router-link>
     <router-link to="/" class="list">后端</router-link>
     <router-link to="/" class="list">前端</router-link>
     <router-link to="/" class="list">Android</router-link>
