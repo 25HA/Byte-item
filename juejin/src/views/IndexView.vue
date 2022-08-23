@@ -3,7 +3,7 @@
     <!-- 首页导航栏 -->
     <div class="topbar_wrap">
       <div class="topbar">
-        <router-link to="/IndexView_Content" class="list list_active">综合</router-link>
+        <router-link to="/" class="list list_active">综合</router-link>
         <router-link to="/" class="list">后端</router-link>
         <router-link to="/" class="list">前端</router-link>
         <router-link to="/" class="list">Android</router-link>

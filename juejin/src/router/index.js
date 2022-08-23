@@ -3,19 +3,22 @@ import Vue from 'vue'
 // import Element from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import test from '../views/boilingView.vue'
 import ccnew from '../views/CourseContentNew.vue'
 import cchot from '../views/CourseContentHot.vue'
 import ccprice from '../views/CourseContentPrice.vue'
+// import HomeView from '../views/HomeView.vue'
+// import test from '../views/boilingView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    
+    redirect: '/home'
   },
   {
     path: '/boilingView',
@@ -28,11 +31,15 @@ const routes = [
     component: () => import('../views/Content.vue')
   },
   {
-    path: '/IndexView',
+    path: '/home',
     name: 'IndexView',
     component: () => import('../views/IndexView.vue'),
     //二级路由进入口
     children: [
+      {
+        path: '/',
+        redirect: '/IndexView_Content'
+      },
       {
         path:'/IndexView_Content',
         name:'IndexView_Content',
@@ -47,6 +54,12 @@ const routes = [
     children: [
       {
         path: '/',
+
+        redirect: '/coursecontent'
+      },
+      {
+        path: '/coursecontent',
+ 
         name: 'coursecontent',
         component: () => import('../views/CourseContent.vue')
       },
