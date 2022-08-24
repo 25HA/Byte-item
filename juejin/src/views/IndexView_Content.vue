@@ -20,7 +20,7 @@
                 <div class="item line">|</div>
                 <div class="item">{{item.date?'1月前':'28天前'}}</div>
                 <div class="item line">|</div>
-                <router-link to="/" class="item">{{item.articleLabel}}</router-link>
+                <router-link to="/" class="item label">{{item.articleLabel}}</router-link>
               </div>
               <div class="article_title">{{item.articleTitle}}</div>
               <div class="article_breif">{{item.articleBreif}}</div>
@@ -414,7 +414,6 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  // overflow: auto;
   //   中间内容区
   .content_main {
     flex: 1;
@@ -448,6 +447,7 @@ body {
       }
     }
     .article_wrap {
+      cursor: pointer;
       width: 100%;
       padding: 1.5rem 1.5rem 0 1.5rem;
       box-sizing: border-box;
@@ -478,11 +478,8 @@ body {
             .line {
               color: #eaeaea;
             }
-            .username:hover {
-              cursor: pointer;
-              color: #1e80ff;
-            }
-            .item:hover {
+            .username:hover ,
+            .label:hover {
               color: #1e80ff;
             }
           }
