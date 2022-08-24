@@ -1,9 +1,4 @@
 import Vue from 'vue'
-<<<<<<< HEAD
-=======
-// import Element from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
->>>>>>> 233d2576127a32ec67a142f5b8d6589defa3a72f
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import test from '../views/boilingView.vue'
