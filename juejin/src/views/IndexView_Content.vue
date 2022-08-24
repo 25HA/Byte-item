@@ -18,30 +18,29 @@
               <div class="article_topbar">
                 <router-link to="/" class="item username">{{item.username}}</router-link>
                 <div class="item line">|</div>
-                <div class="item">{{item.date}}</div>
+                <div class="item">{{item.date?'1月前':'28天前'}}</div>
                 <div class="item line">|</div>
-                <router-link to="/" class="item">{{item.article_label}}</router-link>
+                <router-link to="/" class="item">{{item.articleLabel}}</router-link>
               </div>
-              <div class="article_title">{{item.article_title}}</div>
-              <div class="article_breif">{{item.article_breif}}</div>
+              <div class="article_title">{{item.articleTitle}}</div>
+              <div class="article_breif">{{item.articleBreif}}</div>
               <div class="article_show">
                 <div class="show_eyes">
                   <div class="iconfont icon-eye"></div>
-                  <span>{{item.article_views}}</span>
+                  <span>{{item.articleViews}}</span>
                 </div>
                 <div class="show_thumbs" v-on:click="handleThumbs($event,index)">
                   <div class="iconfont" :class="thumbedArticle.indexOf(index)==-1?'icon-zan':'icon-dianzan_kuai-copy'" ></div>
-                  <!-- <div v-else class="iconfont "></div> -->
-                  <span>{{item.article_thumbs}}</span>
+                  <span>{{item.articleThumbs}}</span>
                 </div>
                 <div class="show_comments">
                   <div class="iconfont icon-comment"></div>
-                  <span>{{item.article_comments}}</span>
+                  <span>{{item.articleComments}}</span>
                 </div>
               </div>
             </div>
             <div v-if="item.article_cover" class="article_image">
-              <img :src="item.article_cover" alt="cover" />
+              <img :src="item.articleCover" alt="cover" />
             </div>
             <div v-else class="article_image"></div>
           </div>
@@ -71,7 +70,7 @@
         </div>
 
         <!-- 掘金相关活动以及掘金app -->
-        <div class="list_about_wrap">
+        <div class="list_about_wrap" :class="isShow==true?'ShowDetail':''" >
           <div class="about_activity_wrap">
             <img src="../assets/IndexView_activity.webp" alt />
           </div>
@@ -119,7 +118,7 @@
         </div>
 
         <!-- 稀土掘金指南 -->
-        <div class="list_introduce_wrap">
+        <div class="list_introduce_wrap" >
           <router-link
             :to="item.related_details"
             class="introduce_juejin"
@@ -132,7 +131,7 @@
         </div>
 
         <!-- 掘金详细信息 -->
-        <div class="list_detail_wrap">
+        <div class="list_detail_wrap" id="wrap">
           <div class="item_wrap">
             <router-link class="item" to="/">用户协议</router-link>
             <router-link class="item" to="/">营业执照</router-link>
@@ -166,6 +165,16 @@
         </div>
       </div>
     </div>
+
+    <div class="other_wrap">
+      <div class="toTop" v-show="isDisplay">
+        <router-link to="/" class="iconfont icon-back-top1_fill"></router-link>
+      </div>
+
+      <div class="faceback">
+        <router-link to="/" class="iconfont icon-pishijieguofankui"></router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -173,13 +182,15 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 // 调用请求的开始
-import axios from "axios";
+import axios from 'axios'
+import {getArticles} from '@/api'
 export default {
   // 定义全局数据
   data() {
     return {
       // 文章列表数组
       articleList: [],
+      Articles:[],
       // 作者榜
       authorList: [],
       // 掘金指南相关
@@ -190,19 +201,55 @@ export default {
       isPresent:false,
       // 我点赞的文章
       thumbedArticle:[],
-      totalDay:0
+      totalDay:0,
+      isShow:false,
+      times:0,
+      isDisplay:false
     };
   },
   // 调用ajax请求方法
   created() {
-    this.getArticleList();
+    // this.getArticleList();
     this.getAuthorList();
     this.getRelatedList();
     this.handleSometine();
+
+    getArticles({
+      times: this.times+1
+    }).then(res=>{
+      // console.log(res);
+      this.articleList=this.articleList.concat(res);
+      // console.log(this.articleList);
+      this.times+=1;
+    })
   },
   mounted(){
     // 监听滚轮事件
-    addEventListener('scroll',this.handleScroll)
+    addEventListener('scroll',this.handleScroll);
+    window.addEventListener('scroll',(e)=>{
+      let wrapHeigth=document.getElementById('wrap').offsetHeight;
+      let wrapTop=document.getElementById('wrap').offsetTop;
+      //滚动条距离顶部的距离
+			let scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+      if(wrapHeigth+wrapTop<=scrollTop){
+        this.isShow=true
+      }else{
+        this.isShow=false
+      }
+    });
+    window.addEventListener("scroll",(e)=>{
+      //滚动条距离顶部的距离
+			let scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+      //可视区的高度
+			let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      //滚动条的总高度
+			let scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+      if(scrollTop+scrollHeight>windowHeight){
+        this.isDisplay=true;
+      }else{
+        this.isDisplay=false;
+      }
+    })
   },
   // 绑定方法的执行函数的聚集池
   methods: {
@@ -248,13 +295,13 @@ export default {
       if(!this.thumbedArticle.indexOf(index)){
         // console.log('thumbed');
         this.thumbedArticle=this.thumbedArticle.filter(i=>i!=index);
-        this.articleList[index].article_thumbs-=1;
+        this.articleList[index].articleThumbs-=1;
         // console.log(this.thumbedArticle);
       }else{
         // console.log('no');
         this.thumbedArticle.push(index);
         // console.log(this.thumbedArticle);
-        this.articleList[index].article_thumbs=+this.articleList[index].article_thumbs+1
+        this.articleList[index].articleThumbs=+this.articleList[index].articleThumbs+1
 
       }
     },
@@ -319,7 +366,16 @@ export default {
 			 //滚动条到底部的条件
 			 if(scrollTop+windowHeight == scrollHeight){
           // console.log('到底啦~');
-          this.getArticleList();
+          // this.getArticleList();
+          // console.log(this.times);
+          getArticles({
+            times: this.times
+          }).then(res=>{
+            // console.log(res);
+            this.articleList=this.articleList.concat(res);
+            // console.log(this.articleList);
+          })
+          this.times++;
 			 }
     }
   }
@@ -328,7 +384,7 @@ export default {
 
 <style lang="less" scoped>
 /* 引入iconfont所需图标 */
-@import "https://at.alicdn.com/t/c/font_3595625_qzqipxppu8.css";
+@import 'https://at.alicdn.com/t/c/font_3595625_5n6jw02sv0o.css';
 * {
   margin: 0;
   padding: 0;
@@ -715,6 +771,10 @@ body {
         }
       }
     }
+    .ShowDetail{
+      position: fixed;
+      top: 5rem;
+    }
     .list_detail_wrap {
       background-color: #fff;
       display: flex;
@@ -759,6 +819,36 @@ body {
           }
         }
       }
+    }
+    
+  }
+}
+.other_wrap{
+  width: 10rem;
+  height: 10rem;
+  // background-color: red;
+  position: fixed;
+  right: 10rem;
+  bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .toTop,.faceback{
+    width: 3rem;
+    height: 3rem;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: 0.2rem solid #eee;
+    .iconfont{
+      font-size: 1.5rem;
+    }
+    .icon-pishijieguofankui{
+      color: #1e80ff;
     }
   }
 }

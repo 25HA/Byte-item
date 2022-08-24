@@ -5,7 +5,7 @@
         <div><img src="../assets/juejin.png" style="border:none; "></div>
       </li>
       <li>
-        <router-link to="/IndexView">首页</router-link>
+        <router-link to="/">首页</router-link>
       </li>
       <li>
         <router-link to="/boilingView">沸点</router-link>
@@ -14,16 +14,16 @@
         <router-link to="/Course">课程</router-link>
       </li>
       <li>
-        <router-link to="/">直播</router-link>
+        <router-link to="">直播</router-link>
       </li>
       <li>
-        <router-link to="/">活动</router-link>
+        <router-link to="">活动</router-link>
       </li>
       <li>
         <router-link to="/book">商城</router-link>
       </li>
       <li>
-        <router-link to="/">APP</router-link>
+        <router-link to="">APP</router-link>
       </li>
       <li>
         <router-link to="/Content">插件</router-link>
@@ -155,7 +155,9 @@ nav {
         border-radius: 0.1rem;
         // border: 1rem solid rgb(68, 156, 215);
       }
-
+      // .router-link-exact-active{
+      //   color: #1E80FF;
+      // }
       a:hover {
         color: rgb(68, 156, 215);
       }
