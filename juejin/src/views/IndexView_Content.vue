@@ -12,7 +12,7 @@
           <router-link to="/" class="item">热榜</router-link>
         </div>
         <!-- 文章列表 -->
-        <div class="article_wrap" v-for="(item,index) in articleList" :key="index">
+        <div class="article_wrap" v-for="(item,index) in articleList" :key="index" @click="handleDetail">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -291,16 +291,20 @@ export default {
     },
     // 点赞
     handleThumbs(event,index) {
-      console.log(this.thumbedArticle.indexOf(index));
+      // 阻止冒泡
+      //阻止冒泡需要stopPropagation()方法
+        var e = event || window.event;
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else {
+            e.cancelBubble = true;    //IE兼容
+        }
+      // console.log(this.thumbedArticle.indexOf(index));
       if(!this.thumbedArticle.indexOf(index)){
-        // console.log('thumbed');
         this.thumbedArticle=this.thumbedArticle.filter(i=>i!=index);
         this.articleList[index].articleThumbs-=1;
-        // console.log(this.thumbedArticle);
       }else{
-        // console.log('no');
         this.thumbedArticle.push(index);
-        // console.log(this.thumbedArticle);
         this.articleList[index].articleThumbs=+this.articleList[index].articleThumbs+1
 
       }
@@ -377,6 +381,10 @@ export default {
           })
           this.times++;
 			 }
+    },
+    // 跳转到文章详情
+    handleDetail(){
+      this.$router.replace('/Content')
     }
   }
 };
@@ -846,6 +854,9 @@ body {
     border: 0.2rem solid #eee;
     .iconfont{
       font-size: 1.5rem;
+    }
+    .icon-back-top1_fill{
+      color: #666;
     }
     .icon-pishijieguofankui{
       color: #1e80ff;
