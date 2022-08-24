@@ -410,7 +410,6 @@ body {
 .content_wrap {
   width: 50%;
   margin-left: 30rem;
-  // background-color: red;
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
@@ -451,7 +450,6 @@ body {
       width: 100%;
       padding: 1.5rem 1.5rem 0 1.5rem;
       box-sizing: border-box;
-      // background-color: #ff6700;
       position: relative;
       .article_content {
         width: 100%;
@@ -560,7 +558,6 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      // background-color: red;
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -573,7 +570,6 @@ body {
     width: 25rem;
     padding: 0 0 0 1rem;
     box-sizing: border-box;
-    // background-color: #bfa;
     .list_attendance_wrap {
       width: 24rem;
       padding: 1.5rem;
@@ -588,7 +584,6 @@ body {
           display: flex;
           align-items: center;
           position: relative;
-          // background-color: #bfa;
           .top_logo {
             width: 2rem;
             margin-right: 1rem;
@@ -619,7 +614,6 @@ body {
         .attendance_bottom {
           margin-top: 1rem;
           width: 100%;
-          // background-color: #bfa;
           text-align: center;
           color: #63686c;
           span {
@@ -662,7 +656,6 @@ body {
         }
         .app_right_wrap {
           flex: 1;
-          // background-color: red;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -696,14 +689,11 @@ body {
         padding: 1rem;
         box-sizing: border-box;
         border-bottom: 1px solid #f5f5f5;
-        // background-color: red;
         .author_icon {
           width: 4.6rem;
           height: 4.6rem;
-          // margin-right: 1rem;
           border-radius: 50%;
           overflow: hidden;
-          // background-color: #ff6799;
 
           img {
             width: 4.6rem;
@@ -712,7 +702,6 @@ body {
         }
         .author_info {
           flex: 1;
-          // background-color: #ff6799;
           margin-left: 1rem;
           .info_nickname {
             font-size: 1.4rem;
@@ -805,12 +794,6 @@ body {
       .detail_icon {
         display: flex;
         align-items: center;
-        // .weibo_icon{
-        //   background-color: #D81E06;
-        // }
-        // .weixin_icon{
-        //   background-color: #1AFA29;
-        // }
         .weibo_icon,
         .weixin_icon {
           width: 2.6rem;
@@ -831,7 +814,6 @@ body {
 .other_wrap{
   width: 10rem;
   height: 10rem;
-  // background-color: red;
   position: fixed;
   right: 10rem;
   bottom: 10rem;
