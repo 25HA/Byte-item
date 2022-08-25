@@ -71,6 +71,11 @@ const routes = [
     component: () => import('../views/BookDetails.vue')
   },
   {
+    path: '/events/all',
+    name: 'EventsAll',
+    component: () => import('../views/EventsAll.vue')
+  },
+  {
     path:'/CourseContentNew',
     name:'CourseContentNew',
     component:ccnew
