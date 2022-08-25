@@ -1,13 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-import HomeView from '../views/HomeView.vue'
-import test from '../views/boilingView.vue'
 import ccnew from '../views/CourseContentNew.vue'
 import cchot from '../views/CourseContentHot.vue'
 import ccprice from '../views/CourseContentPrice.vue'
-// import HomeView from '../views/HomeView.vue'
-// import test from '../views/boilingView.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +61,11 @@ const routes = [
     path: '/book',
     name: 'book',
     component: () => import('../views/BookDetails.vue')
+  },
+  {
+    path: '/events/all',
+    name: 'EventsAll',
+    component: () => import('../views/EventsAll.vue')
   },
   {
     path:'/CourseContentNew',

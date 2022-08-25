@@ -12,7 +12,7 @@
           <router-link to="/" class="item">热榜</router-link>
         </div>
         <!-- 文章列表 -->
-        <div class="article_wrap" v-for="(item,index) in articleList" :key="index">
+        <div class="article_wrap" v-for="(item,index) in articleList" :key="index" @click="handleDetail">
           <div class="article_content">
             <div class="article_info">
               <div class="article_topbar">
@@ -20,7 +20,7 @@
                 <div class="item line">|</div>
                 <div class="item">{{item.date?'1月前':'28天前'}}</div>
                 <div class="item line">|</div>
-                <router-link to="/" class="item">{{item.articleLabel}}</router-link>
+                <router-link to="/" class="item label">{{item.articleLabel}}</router-link>
               </div>
               <div class="article_title">{{item.articleTitle}}</div>
               <div class="article_breif">{{item.articleBreif}}</div>
@@ -291,16 +291,20 @@ export default {
     },
     // 点赞
     handleThumbs(event,index) {
-      console.log(this.thumbedArticle.indexOf(index));
+      // 阻止冒泡
+      //阻止冒泡需要stopPropagation()方法
+        var e = event || window.event;
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else {
+            e.cancelBubble = true;    //IE兼容
+        }
+      // console.log(this.thumbedArticle.indexOf(index));
       if(!this.thumbedArticle.indexOf(index)){
-        // console.log('thumbed');
         this.thumbedArticle=this.thumbedArticle.filter(i=>i!=index);
         this.articleList[index].articleThumbs-=1;
-        // console.log(this.thumbedArticle);
       }else{
-        // console.log('no');
         this.thumbedArticle.push(index);
-        // console.log(this.thumbedArticle);
         this.articleList[index].articleThumbs=+this.articleList[index].articleThumbs+1
 
       }
@@ -377,6 +381,20 @@ export default {
           })
           this.times++;
 			 }
+    },
+    // 跳转到文章详情
+    handleDetail(){
+      // replace无法回到之前页面
+      // this.$router.replace('/Content')
+      // this.$router.replace('/Content')
+
+      // 编程式导航
+      let routeUrl = this.$router.resolve({
+          path: "/Content",
+          query: {id:this.articleList.articleId}
+      });
+     //let routeUrl = this.$router.resolve(`/share/${96}`)
+      window.open(routeUrl.href, '_blank');
     }
   }
 };
@@ -402,11 +420,9 @@ body {
 .content_wrap {
   width: 50%;
   margin-left: 30rem;
-  // background-color: red;
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  // overflow: auto;
   //   中间内容区
   .content_main {
     flex: 1;
@@ -440,10 +456,10 @@ body {
       }
     }
     .article_wrap {
+      cursor: pointer;
       width: 100%;
       padding: 1.5rem 1.5rem 0 1.5rem;
       box-sizing: border-box;
-      // background-color: #ff6700;
       position: relative;
       .article_content {
         width: 100%;
@@ -470,11 +486,8 @@ body {
             .line {
               color: #eaeaea;
             }
-            .username:hover {
-              cursor: pointer;
-              color: #1e80ff;
-            }
-            .item:hover {
+            .username:hover ,
+            .label:hover {
               color: #1e80ff;
             }
           }
@@ -555,7 +568,6 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      // background-color: red;
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -568,7 +580,6 @@ body {
     width: 25rem;
     padding: 0 0 0 1rem;
     box-sizing: border-box;
-    // background-color: #bfa;
     .list_attendance_wrap {
       width: 24rem;
       padding: 1.5rem;
@@ -583,7 +594,6 @@ body {
           display: flex;
           align-items: center;
           position: relative;
-          // background-color: #bfa;
           .top_logo {
             width: 2rem;
             margin-right: 1rem;
@@ -614,7 +624,6 @@ body {
         .attendance_bottom {
           margin-top: 1rem;
           width: 100%;
-          // background-color: #bfa;
           text-align: center;
           color: #63686c;
           span {
@@ -657,7 +666,6 @@ body {
         }
         .app_right_wrap {
           flex: 1;
-          // background-color: red;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -691,14 +699,11 @@ body {
         padding: 1rem;
         box-sizing: border-box;
         border-bottom: 1px solid #f5f5f5;
-        // background-color: red;
         .author_icon {
           width: 4.6rem;
           height: 4.6rem;
-          // margin-right: 1rem;
           border-radius: 50%;
           overflow: hidden;
-          // background-color: #ff6799;
 
           img {
             width: 4.6rem;
@@ -707,7 +712,6 @@ body {
         }
         .author_info {
           flex: 1;
-          // background-color: #ff6799;
           margin-left: 1rem;
           .info_nickname {
             font-size: 1.4rem;
@@ -800,12 +804,6 @@ body {
       .detail_icon {
         display: flex;
         align-items: center;
-        // .weibo_icon{
-        //   background-color: #D81E06;
-        // }
-        // .weixin_icon{
-        //   background-color: #1AFA29;
-        // }
         .weibo_icon,
         .weixin_icon {
           width: 2.6rem;
@@ -826,7 +824,6 @@ body {
 .other_wrap{
   width: 10rem;
   height: 10rem;
-  // background-color: red;
   position: fixed;
   right: 10rem;
   bottom: 10rem;
@@ -846,6 +843,9 @@ body {
     border: 0.2rem solid #eee;
     .iconfont{
       font-size: 1.5rem;
+    }
+    .icon-back-top1_fill{
+      color: #666;
     }
     .icon-pishijieguofankui{
       color: #1e80ff;
