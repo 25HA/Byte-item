@@ -17,7 +17,7 @@
         <router-link to="">直播</router-link>
       </li>
       <li>
-        <router-link to="">活动</router-link>
+        <router-link to="/events/all">活动</router-link>
       </li>
       <li>
         <router-link to="/book">商城</router-link>
