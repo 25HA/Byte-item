@@ -384,7 +384,17 @@ export default {
     },
     // 跳转到文章详情
     handleDetail(){
-      this.$router.replace('/Content')
+      // replace无法回到之前页面
+      // this.$router.replace('/Content')
+      // this.$router.replace('/Content')
+
+      // 编程式导航
+      let routeUrl = this.$router.resolve({
+          path: "/Content",
+          query: {id:this.articleList.articleId}
+      });
+     //let routeUrl = this.$router.resolve(`/share/${96}`)
+      window.open(routeUrl.href, '_blank');
     }
   }
 };
