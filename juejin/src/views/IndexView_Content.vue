@@ -184,8 +184,9 @@
 // 调用请求的开始
 import axios from 'axios'
 import {getArticles} from '@/api'
+
 export default {
-  // 定义全局数据
+  // 定义全局数据函数
   data() {
     return {
       // 文章列表数组
@@ -399,6 +400,7 @@ export default {
   }
 };
 </script>
+
 
 <style lang="less" scoped>
 /* 引入iconfont所需图标 */
