@@ -1,10 +1,4 @@
 import Vue from 'vue'
-<<<<<<< HEAD
-=======
-
-// import Element from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
->>>>>>> 0fee62b20f98c50b361897e1fa7928475213e902
 import VueRouter from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'

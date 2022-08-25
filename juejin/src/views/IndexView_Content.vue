@@ -262,7 +262,7 @@ export default {
         .then(res => {
           // console.log(res);
           this.articleList =this.articleList.concat(res.data) ;
-          // console.log(this.articleList);
+          console.log(this.articleList);
         });
     },
     // 发接口请求
