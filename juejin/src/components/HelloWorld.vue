@@ -14,19 +14,19 @@
         <router-link to="/Course">课程</router-link>
       </li>
       <li>
-        <router-link to="">直播</router-link>
+        <a href="https://juejin.cn/live" alt="直播">直播</a>
       </li>
       <li>
-        <router-link to="">活动</router-link>
+        <router-link to="/events/all">活动</router-link>
       </li>
       <li>
-        <router-link to="/book">商城</router-link>
+        <a href="https://detail.youzan.com/show/goods/newest?kdt_id=104340304" alt="商城">商城</a>
       </li>
       <li>
-        <router-link to="">APP</router-link>
+        <a href="https://juejin.cn/app?utm_source=jj_nav" alt="APP">APP</a>
       </li>
       <li>
-        <router-link to="/Content">插件</router-link>
+        <a href="https://juejin.cn/extension?utm_source=jj_nav" alt="插件">插件</a>
       </li>
     </ul>
     <!-- <router-link to="/">Home</router-link> |

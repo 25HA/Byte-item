@@ -420,7 +420,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .page{
     width: 100%;
     font-size: 14px;
